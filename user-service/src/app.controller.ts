@@ -14,4 +14,9 @@ export class AppController {
   getBy(): string {
     return this.appService.getHello();
   }
+
+  @Get()
+  getBy2(): string {
+    return this.appService.getHello();
+  }
 }
