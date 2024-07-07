@@ -1,0 +1,22 @@
+<mxfile host="Electron" modified="2024-07-07T15:35:50.978Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="WnSIBnNpNmO1EHKvztjy" version="24.6.4" type="device">
+  <diagram name="Страница — 1" id="WAFR29YYHJnv9zvU5act">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="iuQzo98t_3aB2WhIDvOf-1" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.management_console;fillColor=#D2D3D3;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="110" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="iuQzo98t_3aB2WhIDvOf-4" value="React" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="95" y="130" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="iuQzo98t_3aB2WhIDvOf-5" value="" style="image;points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image=img/lib/allied_telesis/computer_and_terminals/Server_Desktop.svg;" vertex="1" parent="1">
+          <mxGeometry x="408.7" y="70" width="42.599999999999994" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="iuQzo98t_3aB2WhIDvOf-6" value="userService" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
