@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -7,9 +7,6 @@ export class UsersController {
 
   @Get('/')
   async getAllUsers() {
-    return [
-      { id: 1, name: 'danil' },
-      { id: 2, name: 'Alen' },
-    ];
+    return await this.usersService.getAllUsers();
   }
 }
