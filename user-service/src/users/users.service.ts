@@ -6,9 +6,6 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAllUsers() {
-    return [
-      { id: 1, name: 'Danil' },
-      { id: 2, name: 'Artem' },
-    ];
+    return this.prisma.role.findMany();
   }
 }

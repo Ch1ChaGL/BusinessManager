@@ -8,12 +8,13 @@ services:
       - ./user-service/.env
     environment:
       POSTGRES_DB: business_manager
-      DATABASE_URL: postgresql://postgres:postgres@database:5432/business_manager?schema=public
+      DATABASE_PORT: ${DB_PORT}
+      USER_SERVICE_PORT: ${USER_SERVICE_PORT}
     volumes:
       - ./user-service:/app
       - /app/node_modules
     ports:
-      - 4200:4200
+      - ${USER_SERVICE_PORT}:${USER_SERVICE_PORT}
     depends_on:
       database:
         condition: service_healthy
@@ -28,7 +29,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - ${DB_PORT}
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
