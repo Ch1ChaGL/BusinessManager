@@ -2,8 +2,8 @@ version: "3.8"
 
 services:
   user-service:
+    scale: 3
     build: ./user-service
-    container_name: userService
     env_file:
       - ./user-service/.env
     environment:
@@ -14,7 +14,7 @@ services:
       - ./user-service:/app
       - /app/node_modules
     ports:
-      - ${USER_SERVICE_PORT}:${USER_SERVICE_PORT}
+      - "4200-4203:4200"
     depends_on:
       database:
         condition: service_healthy
