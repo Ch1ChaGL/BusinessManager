@@ -5,10 +5,10 @@ FROM node:latest
 WORKDIR /app
 
 # Копирование зависимостей
-COPY package.json yarn.lock ./
-
+COPY package.json ./
+COPY yarn.lock ./
 # Установка зависимостей
-RUN yarn install
+RUN yarn
 RUN yarn global add nestjs
 
 # Копирование .env файла
@@ -17,6 +17,8 @@ COPY .env ./
 # Копирование исходного кода
 COPY . .
 
+# Установка утилиты ping
+RUN apt-get update && apt-get install -y iputils-ping
 # Установка Prisma CLI
 RUN yarn global add prisma
 
