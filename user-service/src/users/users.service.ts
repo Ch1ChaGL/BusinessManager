@@ -6,6 +6,6 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAllUsers() {
-    return this.prisma.role.findMany();
+    return this.prisma.users.findMany();
   }
 }
