@@ -44,6 +44,3 @@ CREATE TRIGGER before_insert_users
 BEFORE INSERT ON "Users"
 FOR EACH ROW
 EXECUTE PROCEDURE set_user_name();
-
-INSERT INTO "Users" ("email", "role_id") VALUES ('john.doe@example.com', 1);
-INSERT INTO "Users" ("email", "role_id") VALUES ('jane.smith@example.com', 2);
