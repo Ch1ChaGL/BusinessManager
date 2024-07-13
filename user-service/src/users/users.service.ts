@@ -6,7 +6,8 @@ export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getAllUsers() {
-    console.log('я тут');
     return this.prisma.users.findMany();
   }
+
+  
 }

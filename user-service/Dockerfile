@@ -12,7 +12,7 @@ RUN yarn
 RUN yarn global add nestjs
 
 # Копирование .env файла
-COPY .env ./
+COPY .production.env ./
 
 # Копирование исходного кода
 COPY . .
@@ -27,4 +27,4 @@ RUN yarn global add prisma
 # RUN npx prisma generate
 
 # Команда для запуска приложения
-CMD ["yarn", "start:dev"]
+CMD ["yarn", "start"]
