@@ -5,11 +5,11 @@ services:
     scale: 3
     build: ./user-service
     env_file:
-      - ./user-service/.env
+      - ./user-service/.production.env
     environment:
-      POSTGRES_DB: business_manager
+      #   # POSTGRES_DB: business_manager
       DATABASE_PORT: ${DB_PORT}
-      USER_SERVICE_PORT: ${USER_SERVICE_PORT}
+      # USER_SERVICE_PORT: ${USER_SERVICE_PORT}
     volumes:
       - ./user-service:/app
       - /app/node_modules

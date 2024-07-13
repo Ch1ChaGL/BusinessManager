@@ -21,7 +21,9 @@ CREATE TABLE IF NOT EXISTS "Users" (
     "name" VARCHAR(255) NOT NULL DEFAULT '',
     "email" VARCHAR(255) UNIQUE NOT NULL,
     "password" VARCHAR(255) NOT NULL,
-    "role_id" INT,
+    "isActivated" BOOLEAN DEFAULT FALSE,
+    "activation_link" VARCHAR(255) UNIQUE,
+    "role_id" INT NOT NULL,
     FOREIGN KEY ("role_id") REFERENCES "Role" ("role_id")
 );
 
