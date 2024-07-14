@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   user-service:
-    scale: 3
+    scale: 1
     build: ./user-service
     env_file:
       - ./user-service/.production.env
@@ -21,6 +21,11 @@ services:
     restart: always
     networks:
       - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5" # Ограничиваем использование процессора до 50%
+          memory: 512M # Ограничиваем использование памяти до 512 MB
 
   database:
     image: postgres
@@ -41,18 +46,52 @@ services:
     restart: always
     networks:
       - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5" # Ограничиваем использование процессора до 50%
+          memory: 512M # Ограничиваем использование памяти до 512 MB
 
   nginx:
     image: nginx:latest
     container_name: nginx-lb
+    # build: ./nginx-service
     ports:
       - "8080:80" # Порт, через который будет доступен лоад балансер
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro # Монтируем конфигурацию NGINX
+      - ./nginx-service/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx-service/oauth2.js:/etc/nginx/oauth2.js:ro  # Монтируем конфигурацию NGINX
     networks:
       - app-network
     depends_on:
       - user-service
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5" # Ограничиваем использование процессора до 50%
+          memory: 512M # Ограничиваем использование памяти до 512 MB
+
+  notification-service:
+    scale: 1
+    build: ./notification-service
+    env_file:
+      - ./notification-service/.production.env
+    volumes:
+      - ./notification-service:/app
+      - /app/node_modules
+    ports:
+      - ":4200"
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: always
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5" # Ограничиваем использование процессора до 50%
+          memory: 512M # Ограничиваем использование памяти до 512 MB
 volumes:
   pgdata:
 

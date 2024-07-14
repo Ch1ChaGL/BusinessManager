@@ -78,12 +78,14 @@ export class AuthService {
     const result = await this.tokensService.verifyAsync(dto.refreshToken);
     if (!result) throw new UnauthorizedException('Invalid refresh token');
 
-    const user = await this.prisma.users.findUnique({
+    console.log('result', result);
+
+    const user = await this.prisma.users.findFirst({
       where: {
         user_id: result.user_id,
       },
     });
-
+    console.log('user', user);
     const tokens = await this.tokensService.issueTokens(
       user.user_id,
       user.role_id,
@@ -137,5 +139,9 @@ export class AuthService {
       where: { user_id: user.user_id },
       data: { ...user, isActivated: true },
     });
+  }
+
+  async validateToken(token: string){
+    return await this.tokensService.verifyAsync(token)
   }
 }
